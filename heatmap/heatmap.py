@@ -240,9 +240,12 @@ def summarize_pass(args):
         line = [s.strip() for s in line.strip().split(',')]
         #line = [line[0], line[1]] + [float(s) for s in line[2:] if s]
         line = [s for s in line if s]
-
-        low  = int(line[2]) + args.offset_freq
-        high = int(line[3]) + args.offset_freq
+        lowFloat = float(line[2])
+        #low  = int(line[2]) + args.offset_freq
+        low  = int(lowFloat) + args.offset_freq
+        #high = int(line[3]) + args.offset_freq
+        highFloat = float(line[3])
+        high = int(highFloat) + args.offset_freq
         step = float(line[4])
         t = line[0] + ' ' + line[1]
         if '-' not in line[0]:
@@ -376,8 +379,12 @@ def collate_row(x_size):
             continue  # happens with live files and time cropping
         if old_t is None:
             old_t = t
-        low = int(line[2]) + args.offset_freq
-        high = int(line[3]) + args.offset_freq
+        lowFloat = float(line[2])
+        #low = int(line[2]) + args.offset_freq
+        low = int(lowFloat) + args.offset_freq
+        #high = int(line[3]) + args.offset_freq
+        highFloat = float(line[3])
+        high = int(highFloat) + args.offset_freq
         step = float(line[4])
         columns = list(frange(low, high, step))
         start_col, stop_col = slice_columns(columns, args.low_freq, args.high_freq)
