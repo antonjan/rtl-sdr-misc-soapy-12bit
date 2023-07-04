@@ -1,6 +1,10 @@
 # rtl-sdr-misc-soapy-12bit
 A bucket of various work-in-progress rtl-sdr  and soapy heatmap ideas.
 I modified the Heatmap.py file to be able to read Floting string vales from the soapy_power utility
+# Commands
+## Creating the soapy power readigs  with this command
+soapy_power -f 1M:30M -B 10000  -n 1 -s 65520 -F rtl_power -O - >> "hf_monitoring_`date '+%d-%m-%Y'`.cvs"
+## creating the heatmap for soapy device 
 Command creating csv file form sdrplay or hackrf .... heatmap.py --ytick 5m --db -150 -50 --palette charolastra "hf_monitoring_`date '+%d-%m-%Y'`.cvs" "hf_noise_`date '+%d-%m-%Y'`.png"
 
 
